@@ -60,6 +60,18 @@ class String
     Digest::SHA1.hexdigest(self)
   end
 
+  # Generates a deterministic hexadecimal string of a specified length.
+  # The method uses the SHA256 hash of the string (self) as a seed for a random number generator.
+  # This ensures that the same input string will always produce the same output string.
+  #
+  # @param len [Integer] the length of the resulting hexadecimal string (default is 10)
+  # @return [String] a deterministic hexadecimal string of the specified length
+  def deterministic_hex(len = 8)
+    numeric_seed = Digest::SHA256.hexdigest(self).to_i(16)
+    rng = Random.new(numeric_seed)
+    Array.new(len) { rng.rand(16).to_s(16) }.join
+  end
+
   # Converts the current object (self) to a boolean value.
   # Uses ActiveModel::Type::Boolean to cast the value.
   # If the cast result is nil, it returns false.
