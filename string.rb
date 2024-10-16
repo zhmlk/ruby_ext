@@ -1,5 +1,13 @@
 class String
 
+  # Converts the current object (self) to a boolean value.
+  # Uses ActiveModel::Type::Boolean to cast the value.
+  # If the cast result is nil, it returns false.
+  # @return [Boolean] The boolean representation of the object.
+  def to_b
+    ActiveModel::Type::Boolean.new.cast(self) || false
+  end
+
   # Encrypts and signs the current object (self) using the provided arguments.
   # The arguments are the same as those used in ActiveSupport::MessageEncryptor.
   # @param args [Hash] Optional arguments for the encryption and signing process.
