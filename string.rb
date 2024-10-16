@@ -1,5 +1,22 @@
 class String
 
+  # Checks if the current string (self) is a valid hex color code.
+  # A valid hex color code starts with a '#' followed by exactly 6 hexadecimal digits.
+  # The match is case-insensitive.
+  # @return [Boolean] True if the string is a valid hex color code, false otherwise.
+  def hex_colour?
+    self.match?(/^#[0-9A-F]{6}$/i)
+  end
+
+  # Checks if the current string (self) is a valid transparent hex color code.
+  # A valid transparent hex color code starts with a '#' followed by 6 hexadecimal digits,
+  # and optionally followed by 2 more hexadecimal digits for transparency.
+  # The match is case-insensitive.
+  # @return [Boolean] True if the string is a valid transparent hex color code, false otherwise.
+  def transparent_hex_colour?
+    self.match?(/^#[0-9A-F]{6}[0-9a-f]{0,2}$/i)
+  end
+
   # Computes the SHA-256 hash of the current object (self).
   # Uses the Digest::SHA256 library to generate the hash.
   # @return [String] The SHA-256 hexadecimal hash of the object.
