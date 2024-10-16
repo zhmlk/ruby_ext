@@ -1,5 +1,22 @@
 class String
 
+  # Shuffles the characters of the current string (self) randomly.
+  # @return [String] A new string with the characters shuffled.
+  def shuffle
+    chars.shuffle.join
+  end
+
+  # Securely shuffles the characters of the current string (self) randomly.
+  # If the string has fewer than 2 unique characters, it returns the original string.
+  # It ensures that the shuffled string is different from the original string.
+  # If the shuffled string is the same as the original, it recursively shuffles again.
+  # @return [String] A new string with the characters securely shuffled.
+  def secure_shuffle
+    return self if chars.uniq.size < 2 # returns self if string is empty or has all identical characters returns (eg "" or "aaa")
+    val = shuffle
+    val == self ? secure_shuffle : val
+  end
+
   # Checks if the current string (self) is a valid hex color code.
   # A valid hex color code starts with a '#' followed by exactly 6 hexadecimal digits.
   # The match is case-insensitive.
