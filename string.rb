@@ -1,5 +1,19 @@
 class String
 
+  # Computes the SHA-256 hash of the current object (self).
+  # Uses the Digest::SHA256 library to generate the hash.
+  # @return [String] The SHA-256 hexadecimal hash of the object.
+  def to_sha256
+    Digest::SHA256.hexdigest(self)
+  end
+
+  # Computes the SHA-1 hash of the current object (self).
+  # Uses the Digest::SHA1 library to generate the hash.
+  # @return [String] The SHA-1 hexadecimal hash of the object.
+  def to_sha1
+    Digest::SHA1.hexdigest(self)
+  end
+
   # Converts the current object (self) to a boolean value.
   # Uses ActiveModel::Type::Boolean to cast the value.
   # If the cast result is nil, it returns false.
