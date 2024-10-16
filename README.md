@@ -1,6 +1,6 @@
 # Ruby Class Extensions
 
-This `Ruby` class extensions adds several powerful utility methods to enhance the functionality of Ruby's core classes.
+This collection of Ruby class extensions enhances the functionality of core Ruby classes, including `String` and others, with additional utility methods. These extensions provide useful features such as string manipulation, validation, encryption, hashing, and type conversions.
 
 ---
 
