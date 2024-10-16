@@ -1,10 +1,16 @@
-# Ruby class extras
+# Ruby Class Extensions
 
-### On RoR:
-Add desired extention file to any folder.
+This `Ruby` class extensions adds several powerful utility methods to enhance the functionality of Ruby's core classes.
 
-Require the file when rails is initializing.
+---
 
-Exaple. This code loads all extras in `lib/ruby_ext/` folder:
+## Installation & Setup (on Rails)
+To use these extensions within a Ruby on Rails application:
 
-    Dir[File.join(Rails.root, "lib", "ruby_ext", "*.rb")].each { |l| require l }
+1. **Add the extension file** to the desired folder (e.g., `lib/ruby_ext/`).
+2. **Require the file** during Rails initialization. 
+
+Example: Load all custom extensions from the `lib/ruby_ext/` folder.
+
+```ruby
+Dir[File.join(Rails.root, "lib", "ruby_ext", "*.rb")].each { |l| require l }
