@@ -17,6 +17,18 @@ class String
     val == self ? secure_shuffle : val
   end
 
+  # Checks if the current string (self) is a valid email address.
+  # A valid email address matches the pattern:
+  # - Starts with one or more word characters, plus signs, hyphens, or dots.
+  # - Followed by an '@' symbol.
+  # - Followed by one or more lowercase letters, digits, hyphens, or dots.
+  # - Followed by a dot and one or more lowercase letters.
+  # The match is case-insensitive.
+  # @return [Boolean] True if the string is a valid email address, false otherwise.
+  def valid_email?
+    self.match?(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
+  end
+
   # Checks if the current string (self) is a valid hex color code.
   # A valid hex color code starts with a '#' followed by exactly 6 hexadecimal digits.
   # The match is case-insensitive.
