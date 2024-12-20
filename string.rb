@@ -98,6 +98,17 @@ class String
     nil
   end
 
+  # This method checks if the string is a valid URL.
+  # It attempts to parse the string as a URI.
+  # If the parsed URI is an HTTP or HTTPS URI, it returns true.
+  # If the string cannot be parsed as a URI, it rescues the InvalidURIError and returns false.
+  def valid_url?
+    uri = URI.parse(self)
+    uri.is_a?(URI::HTTP) || uri.is_a?(URI::HTTPS)
+  rescue URI::InvalidURIError
+    false
+  end
+
   private
   # Returns an instance of ActiveSupport::MessageEncryptor.
   # This instance is initialized with a key derived from an environment variable.
