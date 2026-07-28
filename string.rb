@@ -18,15 +18,12 @@ class String
   end
 
   # Checks if the current string (self) is a valid email address.
-  # A valid email address matches the pattern:
-  # - Starts with one or more word characters, plus signs, hyphens, or dots.
-  # - Followed by an '@' symbol.
-  # - Followed by one or more lowercase letters, digits, hyphens, or dots.
-  # - Followed by a dot and one or more lowercase letters.
-  # The match is case-insensitive.
+  # The email must pass EmailValidator validation and match the expected
+  # email format (local-part@domain.tld).
+  #
   # @return [Boolean] True if the string is a valid email address, false otherwise.
   def valid_email?
-    self.match?(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
+    EmailValidator.valid?(self) && self.match?(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
   end
 
   # Checks if the current string (self) is a valid hex color code.
