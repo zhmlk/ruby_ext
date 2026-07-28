@@ -5,27 +5,27 @@ RSpec.describe String do
     subject(:hostname) { input.extract_hostname }
 
     context "with a full URL" do
-      let(:input) { "https://e-sign.co.uk/c/123" }
+      let(:input) { "https://example.co.uk/c/123" }
 
-      it { is_expected.to eq("e-sign.co.uk") }
+      it { is_expected.to eq("example.co.uk") }
     end
 
     context "with a URL without a scheme" do
-      let(:input) { "e-sign.co.uk/c/123" }
+      let(:input) { "example.co.uk/c/123" }
 
-      it { is_expected.to eq("e-sign.co.uk") }
+      it { is_expected.to eq("example.co.uk") }
     end
 
     context "with a bare hostname" do
-      let(:input) { "e-sign.co.uk" }
+      let(:input) { "example.co.uk" }
 
-      it { is_expected.to eq("e-sign.co.uk") }
+      it { is_expected.to eq("example.co.uk") }
     end
 
     context "with a subdomain" do
-      let(:input) { "www.e-sign.co.uk" }
+      let(:input) { "www.example.co.uk" }
 
-      it { is_expected.to eq("www.e-sign.co.uk") }
+      it { is_expected.to eq("www.example.co.uk") }
     end
 
     context "with a multi-level hostname" do
@@ -35,27 +35,27 @@ RSpec.describe String do
     end
 
     context "with an email address" do
-      let(:input) { "someone@e-sign.co.uk" }
+      let(:input) { "someone@example.co.uk" }
 
-      it { is_expected.to eq("e-sign.co.uk") }
+      it { is_expected.to eq("example.co.uk") }
     end
 
     context "with an email on a subdomain" do
-      let(:input) { "someone@www.e-sign.co.uk" }
+      let(:input) { "someone@www.example.co.uk" }
 
-      it { is_expected.to eq("www.e-sign.co.uk") }
+      it { is_expected.to eq("www.example.co.uk") }
     end
 
     context "with multiple @ symbols" do
-      let(:input) { "someone@e-sign.co.uk@foo.com" }
+      let(:input) { "someone@example.co.uk@foo.com" }
 
-      it { is_expected.to eq("e-sign.co.uk") }
+      it { is_expected.to eq("example.co.uk") }
     end
 
     context "with uppercase letters and whitespace" do
-      let(:input) { "  HTTPS://WWW.E-SIGN.CO.UK/C/123  " }
+      let(:input) { "  HTTPS://WWW.EXAMPLE.CO.UK/C/123  " }
 
-      it { is_expected.to eq("www.e-sign.co.uk") }
+      it { is_expected.to eq("www.example.co.uk") }
     end
 
     context "with an invalid hostname" do
@@ -75,39 +75,39 @@ RSpec.describe String do
     subject(:domain) { input.extract_domain }
 
     context "with a full URL" do
-      let(:input) { "https://e-sign.co.uk/c/123" }
+      let(:input) { "https://example.co.uk/c/123" }
 
-      it { is_expected.to eq("e-sign.co.uk") }
+      it { is_expected.to eq("example.co.uk") }
     end
 
     context "with a URL without a scheme" do
-      let(:input) { "e-sign.co.uk/c/123" }
+      let(:input) { "example.co.uk/c/123" }
 
-      it { is_expected.to eq("e-sign.co.uk") }
+      it { is_expected.to eq("example.co.uk") }
     end
 
     context "with a bare domain" do
-      let(:input) { "e-sign.co.uk" }
+      let(:input) { "example.co.uk" }
 
-      it { is_expected.to eq("e-sign.co.uk") }
+      it { is_expected.to eq("example.co.uk") }
     end
 
     context "with a www subdomain" do
-      let(:input) { "www.e-sign.co.uk" }
+      let(:input) { "www.example.co.uk" }
 
-      it { is_expected.to eq("e-sign.co.uk") }
+      it { is_expected.to eq("example.co.uk") }
     end
 
     context "with an email address" do
-      let(:input) { "someone@e-sign.co.uk" }
+      let(:input) { "someone@example.co.uk" }
 
-      it { is_expected.to eq("e-sign.co.uk") }
+      it { is_expected.to eq("example.co.uk") }
     end
 
     context "with an email on a subdomain" do
-      let(:input) { "someone@www.e-sign.co.uk" }
+      let(:input) { "someone@www.example.co.uk" }
 
-      it { is_expected.to eq("e-sign.co.uk") }
+      it { is_expected.to eq("example.co.uk") }
     end
 
     context "with a multi-part TLD" do
@@ -117,15 +117,15 @@ RSpec.describe String do
     end
 
     context "with uppercase letters and whitespace" do
-      let(:input) { "  HTTPS://e-sign.co.uk/C/123  " }
+      let(:input) { "  HTTPS://WWW.EXAMPLE.CO.UK/C/123  " }
 
-      it { is_expected.to eq("e-sign.co.uk") }
+      it { is_expected.to eq("example.co.uk") }
     end
 
     context "with multiple @ symbols" do
-      let(:input) { "someone@e-sign.co.uk@foo.com" }
+      let(:input) { "someone@example.co.uk@foo.com" }
 
-      it { is_expected.to eq("e-sign.co.uk") }
+      it { is_expected.to eq("example.co.uk") }
     end
 
     context "with an invalid domain" do
