@@ -109,6 +109,23 @@ class String
     false
   end
 
+  # Extracts the registrable domain from the current string (self).
+  # Supports URLs (with or without a scheme), email addresses, and bare domains.
+  # Returns the registrable domain (e.g. "google.com" or "example.co.uk"),
+  # or nil if the string does not contain a valid domain.
+  #
+  # @return [String, nil] The registrable domain, or nil if no valid domain is found.
+  def extract_domain
+    str = self.strip.downcase
+    str = str.split("@", 2).last if str.include?("@")
+    str = "https://#{str}" unless str.match?(/\A[a-z][a-z0-9+\-.]*:\/\//i)
+    uri = URI.parse(str)
+    host = uri.host || str
+    PublicSuffix.domain(host)
+  rescue
+    nil
+  end
+
   private
   # Returns an instance of ActiveSupport::MessageEncryptor.
   # This instance is initialized with a key derived from an environment variable.
