@@ -1,8 +1,8 @@
 require "rails_helper"
 
-RSpec.describe String do
+RSpec.describe StringUtils do
   describe "#extract_hostname" do
-    subject(:hostname) { input.extract_hostname }
+    subject(:hostname) { StringUtils.extract_hostname(input) }
 
     context "with a full URL" do
       let(:input) { "https://example.co.uk/c/123" }
@@ -72,7 +72,7 @@ RSpec.describe String do
   end
 
   describe "#extract_domain" do
-    subject(:domain) { input.extract_domain }
+    subject(:domain) { StringUtils.extract_domain(input) }
 
     context "with a full URL" do
       let(:input) { "https://example.co.uk/c/123" }
